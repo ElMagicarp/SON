@@ -8,5 +8,4 @@ with{
     gain = main(hslider("Volume",0.5,0,1,.1));
 };
 
-
-process = main:>ef.echo1s;
+process = main:>ef.echo1s <:dm.freeverb_demo;
