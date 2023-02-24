@@ -15,10 +15,10 @@ with {
 	d = i : (+ : +(w) : fmod(_,w)) ~ _;
 };
 
-pitchShift = transp(3000,100,hslider("shift", 0, -50, +50, 1));
+pitchShift = transp(1000,100,hslider("shift", 0, -50, +50, 1));
 delay = hslider("echoDelay", 0, 0, 1000, 10);
 feedback = hslider("echoFeedback", 0.5, 0, 1, 0.1);
-myEcho  = vgroup("echo", +~(de.delay(65536, int(delay*ba.millisec)-1) * feedback));
+myEcho  = vgroup("echo", +~(de.delay(2000, int(delay*ba.millisec)-1) * feedback));
 
 proc = main:pitchShift:myEcho;
 
