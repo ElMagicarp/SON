@@ -1,5 +1,4 @@
 import("stdfaust.lib");
-
 main = fi.low_shelf(lowLevel,200):fi.high_shelf(highLevel,8000): *(gain)
 with{
     main(x) = hgroup("FUN MIX",x);
@@ -17,7 +16,10 @@ with {
 };
 
 pitchShift = transp(3000,100,hslider("shift", 0, -50, +50, 1));
-delay = hslider("delay", 0, 0, 1000, 10);
+delay = hslider("echoDelay", 0, 0, 1000, 10);
+feedback = hslider("echoFeedback", 0.5, 0, 1, 0.1);
+myEcho  = vgroup("echo", +~(de.delay(65536, int(delay*ba.millisec)-1) * feedback));
 
+proc = main:pitchShift:myEcho;
 
-process = + ~ (@(delay)*(0.75)), (main:pitchShift);
+process = par(i,2,proc);
