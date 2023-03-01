@@ -30,6 +30,7 @@ void loop() {
   float vol = (float)analogRead(A17)/1023.0; // 0-1
   float hi = ((float)analogRead(A12)*40.0/1023.0)-20;
   float lo = ((float)analogRead(A10)*40.0/1023.0)-20; 
+  float mid = ((float)analogRead(A11)*40.0/1023.0)-20; 
   float sh = ((float)analogRead(A14)*26.0/1023.0) - 12.0;
   float del = (float)analogRead(A15)*800.0/1023.0; // 0-1000 ms
   float feed = (float)analogRead(A16)*0.8/1023.0;
@@ -40,6 +41,7 @@ void loop() {
   myDsp.setParamValue("volume",vol);
   myDsp.setParamValue("high",hi);
   myDsp.setParamValue("low",lo);
+  myDsp.setParamValue("mid",mid);
   myDsp.setParamValue("echoDelay",del);
   myDsp.setParamValue("echoFeedback",feed);
   myDsp.setParamValue("shift",sh);
