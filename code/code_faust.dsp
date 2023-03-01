@@ -1,9 +1,10 @@
 import("stdfaust.lib");
-main = fi.low_shelf(lowLevel,200):fi.high_shelf(highLevel,8000)
+main = fi.low_shelf(lowLevel,200):fi.high_shelf(highLevel,8000):fi.resonbp(4100, 10, midLevel)
 with{
     main(x) = hgroup("FUN MIX",x);
     lowLevel = main(hslider("low",0,-40,40,0.1));
     highLevel = main(hslider("high",0,-40,40,.1));
+    midLevel = main(hslider("mid",0,-40,40,.1));
 };
 
 transp(w, x, s, sig) = de.delay(maxDelay,d,sig)*ma.fmin(d/x,1) +
