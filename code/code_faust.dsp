@@ -1,5 +1,6 @@
 import("stdfaust.lib");
-main = fi.low_shelf(lowLevel,200):fi.high_shelf(highLevel,8000):fi.resonbp(4100, 10, midLevel)
+main = fi.high_shelf(midLevel,200):fi.low_shelf(lowLevel,200):fi.high_shelf(highLevel-midLevel,8000)
+
 with{
     main(x) = hgroup("FUN MIX",x);
     lowLevel = main(hslider("low",0,-40,40,0.1));
