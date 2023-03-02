@@ -1,4 +1,4 @@
-#include <Audio.h>
+#include <Audio.h>s
 #include "FunMix.h"
 
 FunMix myDsp;
@@ -15,7 +15,6 @@ void setup() {
   AudioMemory(12);
   audioShield.enable();
   audioShield.inputSelect(AUDIO_INPUT_LINEIN);
-  audioShield.micGain(10); // in dB
   audioShield.volume(1);
   myDsp.setParamValue("volume",0.8);
   myDsp.setParamValue("high",0);
@@ -45,8 +44,5 @@ void loop() {
   myDsp.setParamValue("echoDelay",del);
   myDsp.setParamValue("echoFeedback",feed);
   myDsp.setParamValue("shift",sh);
-  Serial.print(del);
-  Serial.print(" ");
-  Serial.println(feed);
-  delay(50);
+  delay(10);
 }
